@@ -47,8 +47,17 @@ task waitForUsersAPI(type: Exec) {
     commandLine './wait-for-api.sh', 'http://localhost:8080/users', 'Users API'
 }
 
+task waitForAdminsAPI(type: Exec) {
+    commandLine './wait-for-api.sh', 'http://localhost:8080/admins', 'Admins API'
+}
+
 task runUsersAPITests(type: Exec) {
     workingDir './users-api'
+    commandLine './gradlew', 'test'
+}
+
+task runAdminsAPITests(type: Exec) {
+    workingDir './admins-api'
     commandLine './gradlew', 'test'
 }
 
@@ -65,6 +74,7 @@ task stopUIDevServer(type: Exec) {
 test {
     dependsOn cleanTest
     dependsOn waitForUsersAPI
+    dependsOn waitForAdminsAPI
 
     testLogging {
         exceptionFormat "full"
@@ -79,7 +89,9 @@ test.finalizedBy(composeDown)
 task allTests(type: Test) {
     dependsOn cleanTest
     dependsOn waitForUsersAPI
+    dependsOn waitForAdminsAPI
     dependsOn runUsersAPITests
+    dependsOn runAdminsAPITests
 
     testLogging {
         exceptionFormat "full"

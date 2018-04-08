@@ -42,7 +42,7 @@ class App extends Component {
       return;
     }
     try {
-      const response = await axios.get(process.env.REACT_APP_HOST+`/username/${username}`);
+      const response = await axios.get(process.env.REACT_APP_HOST+`/users/username/${username}`);
       const candArr = response.data;
       if(candArr.length === 0) {
         this.setState({...this.state, loginErrorMSG: "Cannot find such user, please sign up first!"});
@@ -89,7 +89,7 @@ class App extends Component {
         'birthday': birthday
       };
 
-      const response = await axios.post(process.env.REACT_APP_HOST+'/', newUser);
+      const response = await axios.post(process.env.REACT_APP_HOST+'/users/', newUser);
       if(response.status === 200) {
         const data = response.data;
         this.setState({...this.state, login: true, userId: data['id'], userName: data['userName'],
@@ -132,7 +132,7 @@ class App extends Component {
   handleDelete = async () => {
     if(window.confirm('Do you really want to delete this account?')) {
       try {
-        await axios.delete(process.env.REACT_APP_HOST+`/${this.state.userId}`);
+        await axios.delete(process.env.REACT_APP_HOST+`/users/${this.state.userId}`);
         this.handleLogout();
       } catch (error) {
         console.log('Error deleting this account!');
@@ -164,7 +164,7 @@ class App extends Component {
         'birthday': birthday
       };
 
-      const response = await axios.patch(process.env.REACT_APP_HOST+`/${this.state.userId}`, updatedUser);
+      const response = await axios.patch(process.env.REACT_APP_HOST+`/users/${this.state.userId}`, updatedUser);
       if(response.status === 200) {
         const data = response.data;
         this.setState({...this.state, login: true, userId: data['id'], userName: data['userName'],

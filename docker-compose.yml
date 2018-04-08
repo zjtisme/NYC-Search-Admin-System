@@ -72,7 +72,7 @@ services:
            - postgresdev
            - flyway-migrator
          environment:
-           - REACT_APP_HOST=http://localhost:8080/users
+           - REACT_APP_HOST=http://localhost:8080
   flyway-migrator:
           image: gsengun/flyway-postgres
           volumes:
