@@ -184,8 +184,11 @@ class App extends Component {
     }
   }
 
-  handleUpdate = async (username, pass1, pass2, firstname, lastname, gender, email, phonenumber, birthday) => {
-    if(username.length === 0 || pass1.length === 0 || pass2.length === 0 || firstname.length === 0 || lastname.length === 0|| gender.length === 0 || email.length === 0 || phonenumber.length === 0 || birthday.length === 0) {
+  handleUpdate = async (username, pass1, pass2, firstname, lastname, gender, email, phonenumber, birthday, identification) => {
+    if(identification==='user' && (username.length === 0 || pass1.length === 0 || pass2.length === 0 || firstname.length === 0 || lastname.length === 0|| gender.length === 0 || email.length === 0 || phonenumber.length === 0 || birthday.length === 0)) {
+        this.setState({...this.state, configureErrorMSG: 'All fields are required!'});
+        return;
+      } else if (identification === 'admin' && (username.length === 0 || pass1.length === 0 || pass2.length === 0 )) {
         this.setState({...this.state, configureErrorMSG: 'All fields are required!'});
         return;
       }
@@ -196,28 +199,48 @@ class App extends Component {
     }
 
     try {
-      const updatedUser = {
-        'userName': username,
-        'password': pass1,
-        'firstName': firstname,
-        'lastName': lastname,
-        'gender': gender,
-        'email': email,
-        'phoneNumber': phonenumber,
-        'birthday': birthday
-      };
+      if(identification === 'user') {
+        const updatedUser = {
+          'userName': username,
+          'password': pass1,
+          'firstName': firstname,
+          'lastName': lastname,
+          'gender': gender,
+          'email': email,
+          'phoneNumber': phonenumber,
+          'birthday': birthday
+        };
 
-      const response = await axios.patch(process.env.REACT_APP_HOST+`/users/${this.state.userId}`, updatedUser);
-      if(response.status === 200) {
-        const data = response.data;
-        this.setState({...this.state, login: true, userId: data['id'], userName: data['userName'],
-          password: data['password'], firstName: data['firstName'], lastName: data['lastName'],
-          gender: data['gender'], email: data['email'], phoneNumber: data['phoneNumber'], birthday: data['birthday'],
-          contentToBeRendered: 'HomePage', configureErrorMSG: ''});
-        localStorage.setItem('login', JSON.stringify(this.state));
-      } else {
-        this.setState({...this.state, configureErrorMSG: 'Error occurs, the status code is: ' + response.status});
-      }
+        const response = await axios.patch(process.env.REACT_APP_HOST+`/users/${this.state.userId}`, updatedUser);
+        if(response.status === 200) {
+          const data = response.data;
+          this.setState({...this.state, login: true, identification:'user', userId: data['id'], userName: data['userName'],
+            password: data['password'], firstName: data['firstName'], lastName: data['lastName'],
+            gender: data['gender'], email: data['email'], phoneNumber: data['phoneNumber'], birthday: data['birthday'],
+            contentToBeRendered: 'HomePage', configureErrorMSG: ''});
+          localStorage.setItem('login', JSON.stringify(this.state));
+        } else {
+          this.setState({...this.state, configureErrorMSG: 'Error occurs, the status code is: ' + response.status});
+        }
+    } else {
+        const updatedAdmin = {
+          'userName': username,
+          'password': pass1
+        };
+
+        const response = await axios.patch(process.env.REACT_APP_HOST+`/admins/${this.state.userId}`, updatedAdmin);
+        if(response.status === 200) {
+          const data = response.data;
+          this.setState({...this.state, login: true, identification:'admin', userId: data['id'], userName: data['userName'],
+            password: data['password'], firstName: '', lastName: '',
+            gender: '', email: '', phoneNumber: '', birthday: '',
+            contentToBeRendered: 'AdminPage', configureErrorMSG: ''});
+          localStorage.setItem('login', JSON.stringify(this.state));
+        } else {
+          this.setState({...this.state, configureErrorMSG: 'Error occurs, the status code is: ' + response.status});
+        }
+
+    }
 
     } catch (error) {
       this.setState({...this.state, configureErrorMSG: 'Cannot connect to server!'});

@@ -23,7 +23,7 @@ class Container extends Component {
         return <ConfigurePage configureErrorMSG={this.props.configureErrorMSG} userId={this.props.userId}
           userName={this.props.userName} password={this.props.password} firstName={this.props.firstName}
           lastName={this.props.lastName} gender={this.props.gender} email={this.props.email} phoneNumber={this.props.phoneNumber}
-          birthday={this.props.birthday} handleUpdate={this.props.handleUpdate}/>;
+          birthday={this.props.birthday} handleUpdate={this.props.handleUpdate} identification={this.props.identification}/>;
       default:
         return <HomePage />
     }
