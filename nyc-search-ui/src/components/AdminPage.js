@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import UserList from './UserList';
 import AddUserPage from './AddUserPage';
+import AdminSearchbar from './AdminSearchbar';
 
 class AdminPage extends Component {
 
@@ -10,7 +11,8 @@ class AdminPage extends Component {
     usersList: [],
     buttonText: "Show Adduser Panel",
     showAddUser: false,
-    createUserError: ''
+    createUserError: '',
+    searchText: ''
   }
 
   async componentDidMount() {
@@ -94,6 +96,10 @@ class AdminPage extends Component {
     }
   }
 
+  handleSearch = (text) => {
+    this.setState({...this.state, searchText: text});
+  }
+
   render() {
     const renderAddUser = () => {
       if(this.state.showAddUser) {
@@ -102,11 +108,12 @@ class AdminPage extends Component {
     };
     return (
       <div>
-          <div style={{"text-align": "center", "margin": "2rem 0"}}>
+          <div style={{"textAlign": "center", "margin": "2rem 0"}}>
               <button className="button" onClick={this.toggleAddUser}>{this.state.buttonText}</button>
           </div>
           {renderAddUser()}
-          <UserList usersList={this.state.usersList} handleDelete={this.handleDelete} handleUpdate={this.handleUpdate}/>
+          <AdminSearchbar handleSearch={this.handleSearch}/>
+          <UserList usersList={this.state.usersList} searchText={this.state.searchText} handleDelete={this.handleDelete} handleUpdate={this.handleUpdate}/>
       </div>
     );
   }
