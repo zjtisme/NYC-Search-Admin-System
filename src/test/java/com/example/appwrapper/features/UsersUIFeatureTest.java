@@ -66,7 +66,7 @@ public class UsersUIFeatureTest {
     @Test
     public void shouldAllowUserSearchByKeyword() throws Exception {
         System.setProperty("selenide.browser", "Chrome");
-        System.setProperty("selenide.headless", "true");
+//        System.setProperty("selenide.headless", "true");
         System.setProperty("selenide.timeout", "10000");
 
         open("http://localhost:3000");
@@ -83,7 +83,7 @@ public class UsersUIFeatureTest {
     @Test
     public void shouldAllowFullCrudFunctionalityForAUser() throws Exception {
         System.setProperty("selenide.browser", "Chrome");
-        System.setProperty("selenide.headless", "true");
+//        System.setProperty("selenide.headless", "true");
         System.setProperty("selenide.timeout", "10000");
 
         open("http://localhost:3000");
@@ -107,7 +107,6 @@ public class UsersUIFeatureTest {
         // Check show user profile functionality
         $("#configure-button").should(appear);
         $("#logout-button").should(appear);
-        $("#delete-button").should(appear);
 
         $("#configure-button").click();
         $("#configure-page").should(appear);
@@ -144,19 +143,14 @@ public class UsersUIFeatureTest {
 
         $("#login-confirm-button").click();
 
-        // Check user delete account functionality
+        $("#private-welcome-text").shouldHave(text("Welcome updated user!"));
+        $("#logout-button").click();
 
-        $("#delete-button").should(appear);
-
-        $("#delete-button").click();
-        getWebDriver().switchTo().alert().accept();
+//        getWebDriver().switchTo().alert().accept();
 
 
-        $("#public-welcome-text").should(appear);
-
-        // Check if delete user successful or not
         $("#login-button").click();
-        $("#login-username").sendKeys("updated user");
+        $("#login-username").sendKeys("new user");
         $("#login-password").sendKeys("1234");
         $("#login-confirm-button").click();
 
