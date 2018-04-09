@@ -14,7 +14,7 @@ class Container extends Component {
       case "HomePage":
         return <HomePage login={this.props.login}/>;
       case "AdminPage":
-        return <AdminPage />
+        return <AdminPage />;
       case "LoginPage":
         return <LoginPage loginErrorMSG={this.props.loginErrorMSG} handleLogin={this.props.handleLogin} identification={this.props.identification}/>;
       case "SignupPage":

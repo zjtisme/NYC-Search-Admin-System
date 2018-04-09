@@ -17,7 +17,6 @@ class Topbar extends Component {
                   <div className="top-bar-right">
                     <ul className="menu">
                       <li><button id="configure-button" className="hollow button success" onClick={()=>{this.props.renderContent("ConfigurePage")}}>Settings</button></li>
-                      <li><button id="delete-button" className="hollow button alert" onClick={()=>{this.props.handleDelete()}}>Delete</button></li>
                       <li><button id="logout-button" className="hollow button secondary" onClick={()=>{this.props.handleLogout()}}>Logout</button></li>
                     </ul>
                   </div>

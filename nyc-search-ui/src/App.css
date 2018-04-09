@@ -43,3 +43,7 @@
 .logo {
   cursor: pointer;
 }
+
+th {
+  text-align: center;
+}

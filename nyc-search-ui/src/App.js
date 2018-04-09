@@ -172,18 +172,6 @@ class App extends Component {
     localStorage.removeItem('login');
   }
 
-  handleDelete = async () => {
-    if(window.confirm('Do you really want to delete this account?')) {
-      try {
-        await axios.delete(process.env.REACT_APP_HOST+`/users/${this.state.userId}`);
-        this.handleLogout();
-      } catch (error) {
-        console.log('Error deleting this account!');
-        console.log(error);
-      }
-    }
-  }
-
   handleUpdate = async (username, pass1, pass2, firstname, lastname, gender, email, phonenumber, birthday, identification) => {
     if(identification==='user' && (username.length === 0 || pass1.length === 0 || pass2.length === 0 || firstname.length === 0 || lastname.length === 0|| gender.length === 0 || email.length === 0 || phonenumber.length === 0 || birthday.length === 0)) {
         this.setState({...this.state, configureErrorMSG: 'All fields are required!'});
@@ -253,7 +241,7 @@ class App extends Component {
     return (
       <div>
         <Topbar login={this.state.login} userName={this.state.userName} renderContent={this.renderContent}
-          handleLogout={this.handleLogout} handleDelete={this.handleDelete} identification={this.state.identification}/>
+          handleLogout={this.handleLogout} identification={this.state.identification}/>
         <Container handleLogin={this.handleLogin}  handleSignup={this.handleSignup}
           {...this.state} handleUpdate={this.handleUpdate}/>
       </div>
