@@ -13,7 +13,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
@@ -66,7 +65,7 @@ public class UsersUIFeatureTest {
     @Test
     public void shouldAllowUserSearchByKeyword() throws Exception {
         System.setProperty("selenide.browser", "Chrome");
-//        System.setProperty("selenide.headless", "true");
+        System.setProperty("selenide.headless", "true");
         System.setProperty("selenide.timeout", "10000");
 
         open("http://localhost:3000");
@@ -83,7 +82,7 @@ public class UsersUIFeatureTest {
     @Test
     public void shouldAllowFullCrudFunctionalityForAUser() throws Exception {
         System.setProperty("selenide.browser", "Chrome");
-//        System.setProperty("selenide.headless", "true");
+        System.setProperty("selenide.headless", "true");
         System.setProperty("selenide.timeout", "10000");
 
         open("http://localhost:3000");

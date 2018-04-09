@@ -61,7 +61,7 @@ class SignupPage extends Component {
       if(this.state.identification === 'user') {
         return <button id="signup-confirm-button" className="button expanded" onClick={this.doSignup}>User Signup</button>
       } else {
-        return <button id="signup-confirm-button" className="warning button expanded" onClick={this.doSignup}>Admin Signup</button>
+        return <button id="admin-signup-confirm-button" className="warning button expanded" onClick={this.doSignup}>Admin Signup</button>
       }
     };
 
@@ -73,7 +73,7 @@ class SignupPage extends Component {
               <div className="callout callout-auth">
                 <div className="expanded button-group">
                   <button className="button" name="user-button" onClick={this.changeIdentification}>User</button>
-                  <button className="button warning" name="admin-button" onClick={this.changeIdentification}>Admin</button>
+                  <button id="admin-signup-change-button" className="button warning" name="admin-button" onClick={this.changeIdentification}>Admin</button>
                 </div>
           <label className="input-form" ref="usernamelabel">Username:
             <input id="signup-username" type="text" ref="username" placeholder="input username..."/>

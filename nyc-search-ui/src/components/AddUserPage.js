@@ -44,7 +44,7 @@ class AddUserPage extends Component {
             <input id="adduser-username" type="text" ref="username" placeholder="user's username..."/>
           </label>
           <label className="input-form" ref="passwordlabel">Password:
-            <input id="adduser-password1" type="password" ref="password" placeholder="user's password..."/>
+            <input id="adduser-password" type="password" ref="password" placeholder="user's password..."/>
           </label>
           <label className="input-form" ref="firstnamelabel">FirstName:
             <input id="adduser-firstname" type="text" ref="firstname" placeholder="user's firstname..."/>

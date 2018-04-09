@@ -107,9 +107,9 @@ class AdminPage extends Component {
       }
     };
     return (
-      <div>
+      <div id="admin-page">
           <div style={{"textAlign": "center", "margin": "2rem 0"}}>
-              <button className="button" onClick={this.toggleAddUser}>{this.state.buttonText}</button>
+              <button id="adduser-button" className="button" onClick={this.toggleAddUser}>{this.state.buttonText}</button>
           </div>
           {renderAddUser()}
           <AdminSearchbar handleSearch={this.handleSearch}/>
