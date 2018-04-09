@@ -63,7 +63,11 @@ class ConfigurePage extends Component {
             <input id="configure-lastname" type="text" ref="lastname" name="lastName" value={this.state.updatedUser.lastName} onChange={this.handleChange}/>
           </label>
           <label className="input-form">Gender:
-            <input id="configure-gender" type="text" ref="gender" name="gender" value={this.state.updatedUser.gender}/>
+              <select id="configure-gender" name="gender" value={this.state.updatedUser.gender} onChange={this.handleChange}>
+                <option value="" ref="genderNull" id="configure-gender-null">---------</option>
+                <option value="Male" ref="genderMale" id="configure-gender-male">Male</option>
+                <option value="Female" ref="genderFemale" id="configure-gender-female">Female</option>
+              </select>
           </label>
           <label className="input-form">Email:
             <input id="configure-email" type="email" ref="email" name="email" value={this.state.updatedUser.email} onChange={this.handleChange}/>
