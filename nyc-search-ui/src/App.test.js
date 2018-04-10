@@ -33,9 +33,9 @@ describe('App axios functions', () => {
     const resp = {data: [{id: 1, userName: 'zjtisme', password: '1234',
       firstName: 'Tony', lastName: 'Zhang', gender: 'Male', email: 'jintai@gmail.com',
       phoneNumber: '1234567890', birthday: '1990-09-09'}]};
-    mock.onGet('/username/zjtisme').reply(200, resp.data);
+    mock.onGet(process.env.REACT_APP_HOST+'/users/username/zjtisme').reply(200, resp.data);
 
-    wrapper.instance().handleLogin('zjtisme', '1234').then(data => {
+    wrapper.instance().handleLogin('zjtisme', '1234', 'user').then(data => {
       expect(wrapper.instance().state.userId).toEqual(1);
       expect(wrapper.instance().state.gender).toEqual('Male');
     });
@@ -51,9 +51,9 @@ describe('App axios functions', () => {
     const resp = {data: [{id: 1, userName: 'zjtisme', password: '1234',
       firstName: 'Tony', lastName: 'Zhang', gender: 'Male', email: 'jintai@gmail.com',
       phoneNumber: '1234567890', birthday: '1990-09-09'}]};
-      mock.onPost('/', newUser).reply(200, resp.data[0]);
+      mock.onPost(process.env.REACT_APP_HOST+'/users/', newUser).reply(200, resp.data[0]);
 
-      wrapper.instance().handleSignup('zjtisme', '1234', '1234', 'Tony', 'Zhang', 'Male', 'jintai@gmail.com', '1234567890', '1990-09-09').then(data => {
+      wrapper.instance().handleSignup('zjtisme', '1234', '1234', 'Tony', 'Zhang', 'Male', 'jintai@gmail.com', '1234567890', '1990-09-09', 'user').then(data => {
         expect(wrapper.instance().state.userId).toEqual(1);
         expect(wrapper.instance().state.gender).toEqual('Male');
       });

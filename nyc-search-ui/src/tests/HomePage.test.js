@@ -18,7 +18,7 @@ describe('HomePage', () => {
     const resp = {data: [{title: 'news1', author: 'person1'},{title: 'news2', author: 'person2'}]};
     mock.onGet(`https://data.cityofnewyork.us/resource/buex-bi6w.json?$$app_token=GuDqVUt8KjD9xVjZRINRk4Kjh&$q=test&$order=end_date DESC&$limit=50`).reply(200, resp.data);
 
-    wrapper.instance().handleSearch('test').then(data => {
+    wrapper.instance().handleSearch('test', '50', 'end_date').then(data => {
       expect(wrapper.instance().state.newsList.length).toEqual(2);
       expect(wrapper.instance().state.newsList[0].title).toEqual('news1');
     });
