@@ -42,4 +42,41 @@
 
 .logo {
   cursor: pointer;
+  background-color: #5e95ed;
+}
+
+.user-choices {
+  width: 60%;
+  margin: 1rem auto;
+}
+
+.top-bar {
+  background-color: #5e95ed;
+}
+
+.news-data {
+  background-image: url("./3.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+#home-page {
+  background-image: url("./1.jpg");
+  background-position: center;
+  background-size: contain;
+}
+
+#login-page, #signup-page, #configure-page {
+  background-image: url("./2.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#login-button, #configure-button, #signup-button, #logout-button {
+  width: 5rem;
+}
+
+#private-welcome-text, #public-welcome-text {
+  color: #efef1a;
 }

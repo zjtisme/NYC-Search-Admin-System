@@ -144,10 +144,7 @@ public class UsersUIFeatureTest {
 
         $("#private-welcome-text").shouldHave(text("Welcome updated user!"));
         $("#logout-button").click();
-
-//        getWebDriver().switchTo().alert().accept();
-
-
+        
         $("#login-button").click();
         $("#login-username").sendKeys("new user");
         $("#login-password").sendKeys("1234");

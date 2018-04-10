@@ -4,7 +4,7 @@ class News extends Component {
 
   render() {
     return (
-      <div data-news-display>
+      <div data-news-display className="news-data">
         <p>{this.props.index}</p>
         <p>request_id: {this.props.request_id}</p>
         <p>agency_name: {this.props.agency_name}</p>

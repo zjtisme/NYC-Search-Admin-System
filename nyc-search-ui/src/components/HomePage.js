@@ -10,14 +10,18 @@ class HomePage extends Component {
     newsList: []
   }
 
-  handleSearch = async (text) => {
+  handleSearch = async (text, number, order) => {
     try {
-      const response = await axios.get(`https://data.cityofnewyork.us/resource/buex-bi6w.json?$$app_token=GuDqVUt8KjD9xVjZRINRk4Kjh&$q=${text}&$order=end_date DESC&$limit=50`);
+      const response = await axios.get(`https://data.cityofnewyork.us/resource/buex-bi6w.json?$$app_token=GuDqVUt8KjD9xVjZRINRk4Kjh&$q=${text}&$order=${order} DESC&$limit=${number}`);
       this.setState({...this.state, newsList: response.data});
     } catch (error) {
       console.log('Error retrieving news!')
       console.log(error)
     }
+  }
+
+  handleSearchClear = () => {
+    this.setState({...this.state, newsList: []});
   }
 
   render() {
@@ -31,7 +35,7 @@ class HomePage extends Component {
         <div id="home-page" className="row">
             <div className="columns small-centered small-10 medium-8 large-8">
               {renderHeader()}
-              <Searchbar handleSearch={this.handleSearch}/>
+              <Searchbar handleSearch={this.handleSearch} login={this.props.login} handleSearchClear={this.handleSearchClear}/>
               <NewsList newsList={this.state.newsList}/>
             </div>
           </div>
