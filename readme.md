@@ -14,7 +14,7 @@ docker-compose CLI installed, you can just spin up the whole system
 by typing "docker-compose up" inside the project folder. When docker-compose inlitialization
 gets done, you can type "http://localhost:3000" to play with this app.</p>
 <p>Also, you could access the endpoint of my website by typing "http://tony-zhang.s3-website-us-west-1.amazonaws.com"
-on your browser.</p>
+on your browser. And you can access my eureka registry by visiting "http://ec2-52-33-64-192.us-west-2.compute.amazonaws.com:8761"</p>
 <h4>App Test Instruction:</h4>
 <p>Run full tests is simple, just type "./gradlew allTests" inside project folder 
 to fire up the whole testing procedure.</p>
