@@ -79,7 +79,7 @@ public class AdminsUIFeatureTest {
     @Test
     public void shouldAllowFullCrudManagementForUsers() throws Exception {
         System.setProperty("selenide.browser", "Chrome");
-        System.setProperty("selenide.headless", "true");
+//        System.setProperty("selenide.headless", "true");
         System.setProperty("selenide.timeout", "10000");
 
         open("http://localhost:3000");

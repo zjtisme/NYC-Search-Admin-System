@@ -77,6 +77,10 @@ public class UsersUIFeatureTest {
 
         $$("[data-news-display]").shouldHave(size(50));
         $("#news-list").shouldHave(text("student"));
+
+        $("#search-clear-button").click();
+        $$("[data-news-display]").shouldHave(size(0));
+        $("#search-bar").shouldHave(text(""));
     }
 
     @Test

@@ -13,7 +13,7 @@ describe('LoginPage', () => {
 
   it('should call handleLogin function when pressed login-confrim-button', () => {
     let handleLogin_spy = jest.fn();
-    const wrapper = mount(<LoginPage handleLogin={handleLogin_spy}/>);
+    const wrapper = mount(<LoginPage handleLogin={handleLogin_spy} identification={'user'}/>);
     wrapper.find("#login-confirm-button").simulate('click');
     expect(handleLogin_spy).toHaveBeenCalled();
   });

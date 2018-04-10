@@ -12,7 +12,7 @@ describe('SignupPage', () => {
 
   it('should call handleSignup when pressed signup-confirm-button', () => {
     const handleSignup_spy = jest.fn();
-    const wrapper = mount(<SignupPage handleSignup={handleSignup_spy}/>);
+    const wrapper = mount(<SignupPage handleSignup={handleSignup_spy} identification={'user'}/>);
     wrapper.find('#signup-confirm-button').simulate('click');
     expect(handleSignup_spy).toHaveBeenCalled();
   });
