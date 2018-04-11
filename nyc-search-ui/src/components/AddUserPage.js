@@ -69,7 +69,7 @@ class AddUserPage extends Component {
             <input id="adduser-birthday" type="date" ref="birthday" placeholder="user's birthday..."/>
           </label>
           <button id="adduser-confirm-button" className="button expanded" onClick={this.doCreateUser}>OK</button>
-          <p className="error-message">{this.props.signupErrorMSG}</p>
+          <p className="error-message">{this.props.createUserError}</p>
         </div>
       </div>
     </div>

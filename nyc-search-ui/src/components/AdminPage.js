@@ -103,7 +103,7 @@ class AdminPage extends Component {
   render() {
     const renderAddUser = () => {
       if(this.state.showAddUser) {
-        return <AddUserPage handleCreateUser={this.handleCreateUser}/>
+        return <AddUserPage handleCreateUser={this.handleCreateUser} createUserError={this.state.createUserError}/>
       }
     };
     return (
