@@ -34,6 +34,7 @@ describe('App axios functions', () => {
       firstName: 'Tony', lastName: 'Zhang', gender: 'Male', email: 'jintai@gmail.com',
       phoneNumber: '1234567890', birthday: '1990-09-09'}]};
     mock.onGet(process.env.REACT_APP_HOST+'/users/username/zjtisme').reply(200, resp.data);
+    mock.onGet(process.env.REACT_APP_HOST+'/users/checkpassword/1/1234').reply(200, true);
 
     wrapper.instance().handleLogin('zjtisme', '1234', 'user').then(data => {
       expect(wrapper.instance().state.userId).toEqual(1);
