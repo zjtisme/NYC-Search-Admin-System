@@ -6,6 +6,9 @@ customize their search preference when they log in.</p>
 <p>Admin could log in, sign up, configure settings like normal users, however, 
 when admins log in, they will see the entire registered users and their personal info.
 Besides, admin has right to add user, modify user, delete user and search user by username.</p>
+<p>For security reasons, I applied Bcrypt encryption for my backend and encypted the password
+in the database. Besides, I also used secure-ls to encrypt my localstorage data, which makes the
+whole system much safer.</p>
 <h4>App Start Instruction:</h4>
 <p>Make sure to run build.gradle first to set up springboot environment, and type
 "npm install" inside nyc-search-ui to install all dependencies.</p>
