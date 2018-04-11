@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -42,6 +43,9 @@ public class AdminsControllerTest {
     @MockBean
     private AdminRepository mockAdminRepository;
 
+    @MockBean
+    private PasswordEncoder encoder;
+
     @Before
     public void setUp() {
         Admin firstAdmin = new Admin(
@@ -70,11 +74,16 @@ public class AdminsControllerTest {
           "111"
         );
 
-        given(mockAdminRepository.save(newAdmin)).willReturn(newAdmin);
+        given(encoder.encode(newAdmin.getPassword())).willReturn("222");
+        Admin encAdmin = new Admin(
+          "new_admin",
+          "222"
+        );
+        given(mockAdminRepository.save(encAdmin)).willReturn(encAdmin);
 
         updatedSecondAdmin = new Admin(
           "updated_admin",
-          "222"
+          "123"
         );
 
         given(mockAdminRepository.save(updatedSecondAdmin)).willReturn(updatedSecondAdmin);
@@ -168,7 +177,7 @@ public class AdminsControllerTest {
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .content(jsonObjectMapper.writeValueAsString(newAdmin))
                 )
-                .andExpect(jsonPath("$.password", is("111")));
+                .andExpect(jsonPath("$.password", is("222")));
     }
 
     @Test
@@ -204,7 +213,7 @@ public class AdminsControllerTest {
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .content(jsonObjectMapper.writeValueAsString(updatedSecondAdmin))
                 )
-                .andExpect(jsonPath("$.password", is("222")));
+                .andExpect(jsonPath("$.password", is("123")));
     }
 
     @Test

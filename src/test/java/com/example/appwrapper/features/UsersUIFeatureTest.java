@@ -115,8 +115,8 @@ public class UsersUIFeatureTest {
         $("#configure-page").should(appear);
 
         $("#configure-username").shouldHave(value("new user"));
-        $("#configure-password1").shouldHave(value("1234"));
-        $("#configure-password2").shouldHave(value("1234"));
+//        $("#configure-password1").shouldHave(value("1234"));
+//        $("#configure-password2").shouldHave(value("1234"));
         $("#configure-firstname").shouldHave(value("New"));
         $("#configure-lastname").shouldHave(value("User"));
         $("#configure-gender").shouldHave(value("Female"));

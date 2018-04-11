@@ -11,6 +11,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.MediaType;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -41,6 +42,9 @@ public class UsersControllerTest {
 
     @MockBean
     private UserRepository mockUserRepository;
+
+    @MockBean
+    private PasswordEncoder encoder;
 
     @Before
     public void setUp() {
@@ -92,11 +96,22 @@ public class UsersControllerTest {
                 "222-222-2222",
                 "1999-10-01"
         );
-        given(mockUserRepository.save(newUser)).willReturn(newUser);
+        given(encoder.encode(newUser.getPassword())).willReturn("222222");
+        User encNewUser = new User(
+                "new_user",
+                "222222",
+                "New",
+                "User",
+                "Female",
+                "newuser@gmail.com",
+                "222-222-2222",
+                "1999-10-01"
+        );
+        given(mockUserRepository.save(encNewUser)).willReturn(encNewUser);
 
         updatedSecondUser = new User(
                 "updated_user",
-                "222222",
+                "123456",
                 "Updated",
                 "User",
                 "Male",
@@ -413,7 +428,7 @@ public class UsersControllerTest {
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .content(jsonObjectMapper.writeValueAsString(newUser))
                 )
-                .andExpect(jsonPath("$.password", is("111111")));
+                .andExpect(jsonPath("$.password", is("222222")));
     }
 
     @Test
@@ -522,7 +537,7 @@ public class UsersControllerTest {
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .content(jsonObjectMapper.writeValueAsString(updatedSecondUser))
                 )
-                .andExpect(jsonPath("$.password", is("222222")));
+                .andExpect(jsonPath("$.password", is("123456")));
     }
 
     @Test

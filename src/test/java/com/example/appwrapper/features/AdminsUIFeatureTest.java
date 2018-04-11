@@ -80,7 +80,7 @@ public class AdminsUIFeatureTest {
     public void shouldAllowFullCrudManagementForUsers() throws Exception {
         System.setProperty("selenide.browser", "Chrome");
 //        System.setProperty("selenide.headless", "true");
-        System.setProperty("selenide.timeout", "10000");
+        System.setProperty("selenide.timeout", "15000");
 
         open("http://localhost:3000");
 
@@ -128,9 +128,9 @@ public class AdminsUIFeatureTest {
 
         $$("[data-users-display]").shouldHave(size(2));
         $("#user-"+firstUserId+"-username").shouldHave(value("zjtisking"));
-        $("#user-"+firstUserId+"-password").shouldHave(value("123456"));
+//        $("#user-"+firstUserId+"-password").shouldHave(value("123456"));
         $("#user-"+secondUserId+"-username").shouldHave(value("tiantian"));
-        $("#user-"+secondUserId+"-password").shouldHave(value("654321"));
+//        $("#user-"+secondUserId+"-password").shouldHave(value("654321"));
 
         $("#adduser-button").should(appear);
         $("#adduser-button").click();

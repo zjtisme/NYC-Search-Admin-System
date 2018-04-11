@@ -53,7 +53,8 @@ class App extends Component {
         }
 
         const cand = candArr[0];
-        if(cand['password'] !== password) {
+        const checkPassRes = await axios.get(process.env.REACT_APP_HOST+`/users/checkpassword/${cand.id}/${password}`);
+        if(!checkPassRes.data) {
             this.setState({...this.state, loginErrorMSG: 'Error username or password, please try again!'});
           } else {
             this.setState({...this.state, login: true, identification: 'user', userName: cand['userName'], userId: cand['id'],
@@ -70,7 +71,8 @@ class App extends Component {
         }
 
         const cand = candArr[0];
-        if(cand['password'] !== password) {
+        const checkPassRes = await axios.get(process.env.REACT_APP_HOST+`/admins/checkpassword/${cand.id}/${password}`);
+        if(!checkPassRes.data) {
             this.setState({...this.state, loginErrorMSG: 'Error username or password, please try again!'});
           } else {
             this.setState({...this.state, login: true, identification: 'admin', userName: cand['userName'], userId: cand['id'],
