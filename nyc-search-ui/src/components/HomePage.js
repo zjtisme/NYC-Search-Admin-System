@@ -31,7 +31,7 @@ class HomePage extends Component {
       }
     };
     return (
-      <div>
+      <div className="container">
         <div id="home-page" className="row">
             <div className="columns small-centered small-10 medium-8 large-8">
               {renderHeader()}

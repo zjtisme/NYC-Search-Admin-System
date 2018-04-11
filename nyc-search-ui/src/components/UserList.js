@@ -32,7 +32,7 @@ class UserList extends Component {
     };
 
     return (
-      <table className="table-scroll hover">
+      <table className="table-scroll hover container__footer">
         <thead>
           <tr>
             <th style={{"textAlign": "center"}}>Id</th>

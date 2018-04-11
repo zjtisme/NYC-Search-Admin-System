@@ -11,7 +11,7 @@ class AdminSearchbar extends Component {
 
   render() {
     return (
-      <div>
+      <div className="container__header">
         <input id="admin-search-bar" style={{"width": "50%", "margin": "1rem auto"}} type="search" ref="searchText" placeholder="Search user by userName..."
           onChange={this.doSearch}/>
       </div>

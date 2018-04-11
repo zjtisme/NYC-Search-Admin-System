@@ -11,14 +11,14 @@ class NewsList extends Component {
 
     const renderNewsList = () => {
         if(newsList.length === 0) {
-          return <p>No search results!</p>
+          return <p style={{"textAlign":"center"}}>No search results!</p>
         } else {
           return <div>{newsList}</div>
         }
     };
 
     return (
-      <div className="container" id="news-list">
+      <div className="container__footer" id="news-list">
         {renderNewsList()}
       </div>
     );

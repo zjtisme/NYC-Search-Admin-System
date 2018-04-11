@@ -107,7 +107,7 @@ class AdminPage extends Component {
       }
     };
     return (
-      <div id="admin-page">
+      <div id="admin-page" className="container">
           <div style={{"textAlign": "center", "margin": "2rem 0"}}>
               <button id="adduser-button" className="button" onClick={this.toggleAddUser}>{this.state.buttonText}</button>
           </div>
