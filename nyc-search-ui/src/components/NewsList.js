@@ -11,7 +11,7 @@ class NewsList extends Component {
 
     const renderNewsList = () => {
         if(newsList.length === 0) {
-          return <p style={{"textAlign":"center"}}>No search results!</p>
+          return <p className="no-result-notice">No search results!</p>
         } else {
           return <div>{newsList}</div>
         }

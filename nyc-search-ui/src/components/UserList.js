@@ -25,7 +25,7 @@ class UserList extends Component {
 
     const renderList = () => {
        if(userList.length === 0) {
-         return <tr><td style={{"textAlign":"center"}} colSpan="11">No search results!</td></tr>
+         return <tr><td className="no-result-notice" colSpan="11">No users found now!</td></tr>
        } else {
          return userList;
        }

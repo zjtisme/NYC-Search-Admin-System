@@ -69,6 +69,13 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.no-result-notice {
+  text-align: center;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: bold;
+  padding-bottom: 1rem;
+}
+
 #login-button, #configure-button, #signup-button, #logout-button {
   width: 5rem;
 }
