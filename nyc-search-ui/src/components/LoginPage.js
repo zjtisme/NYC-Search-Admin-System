@@ -28,7 +28,7 @@ class LoginPage extends Component {
   render() {
     const renderLoginButton = () => {
       if(this.state.identification === 'user') {
-        return <button id="login-confirm-button" className="button expanded" onClick={this.doLogin}>Usr Login</button>;
+        return <button id="login-confirm-button" className="button expanded" onClick={this.doLogin}>User Login</button>;
       } else {
         return <button id="admin-login-confirm-button" className="warning button expanded" onClick={this.doLogin}>Admin Login</button>
       }
