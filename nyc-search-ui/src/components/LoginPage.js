@@ -50,14 +50,11 @@ class LoginPage extends Component {
                 <label className="input-form"> Password:
                       <input id="login-password" type="password" name="password" ref="password" placeholder="input password..."/>
                 </label>
-
                 {renderLoginButton()}
-
                 <p id="login-error" className="error-message">{this.props.loginErrorMSG}</p>
             </div>
           </div>
         </div>
-
       </div>
     );
   }
